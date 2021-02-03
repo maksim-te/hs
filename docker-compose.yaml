@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  hs_app:
+    build: ./hs
+    command: >
+      sh -c "python manage.py migrate
+      && python manage.py createsuperuser_with_password --username $${SU_NAME} --noinput --email $${SU_EMAIL} --password $${SU_PASS}
+      && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - 8000:8000
+    env_file:
+      - ./hs/.env
