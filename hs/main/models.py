@@ -7,7 +7,7 @@ class Task(models.Model):
     due_date_to = models.DateTimeField('Срок исполнения')
 
     def __str__(self):
-        return self.title
+        return self.task_title
 
     class Meta:
         verbose_name = 'Задача'
